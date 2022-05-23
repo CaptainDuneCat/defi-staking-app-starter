@@ -1,6 +1,7 @@
 const Tether = artifacts.require('Tether');
 const RWD = artifacts.require('RWD');
 const DecentralBank = artifacts.require('DecentralBank');
+const Joy = artifacts.require('JoyToken');
 
 module.exports = async function(deployer, network, accounts) {
     await deployer.deploy(Tether)
@@ -16,6 +17,8 @@ module.exports = async function(deployer, network, accounts) {
 
     // Distribute 100 Tether tokens to investor
     await tether.transfer(accounts[1], '1000000000000000000000')
+
+    await deployer.deploy(Joy, 'Joy Super Token', 'Joy');
 
 };
 
